@@ -1,0 +1,27 @@
+Each of the two players has their six pits in front of him. Top-side player has a large pit on left side, bottom-side player
+has a larger pit on the right side. At the start of the game, there are stones in each of the round pits.
+<br/>
+<br/>
+<b>Rules Game Play</b>
+<br/>
+The player who begins with the first move picks up all the stones in any of his own pits, and
+sows the stones on to the right(anticlockwise), one in each of the following pits, including his own big pit. No
+stones are put in the opponents' big pit. If the player's last stone lands in his own big pit, he
+gets another turn. This can be repeated several times before it's the other player's turn.
+<br/>
+<br/>
+<b>Capturing Stones</b>
+<br/>
+During the game the pits are emptied on both sides. Always when the last stone lands in an own
+empty pit, the player captures his own stone and all stones in the opposite pit (the other player’s
+pit) and puts them in his own (big or little?) pit.
+<br/>
+<br/>
+<b>The Game Ends</b>
+<br/>
+The game is over as soon as one of the sides runs out of stones. The player who still has stones in
+his pits keeps them and puts them in his big pit. The winner of the game is the player who has the
+most stones in his big pit.
+<br/>
+You can also find some visual explanations of the game rules by running a Google Search for Mancala
+or Kalaha game.

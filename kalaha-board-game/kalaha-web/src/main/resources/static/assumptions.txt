@@ -1,0 +1,15 @@
+***As this is the alpha version of the product, we have made few assumptions for now .These assumptions might be handled in future scope.****
+<br/>
+<br/>
+Refer instructions guide first by clicking on the <u>Show Instructions</u> button.
+<br/>
+<br/>
+1. PLAYER 1 is assumed to be at top side. PLAYER 2 would then be on bottom side.
+<br/>
+2. PLAYER 1 has his/her large pit on left side (Pit 14). PLAYER 2 has his/her large pit on right side (Pit 7).
+<br/>
+3. First one to move(active player) would be the one who clicks first on their side.
+<br/>
+4. A benefit might be given when last stone lands in empty pit and  just across on the opposite other side, the opponent's pit (opposite small pit) is empty. In such a scenario,
+   player can capture that stone in his own kalaha store(large pit - present on right side of each player). This is optional.
+<br/>
