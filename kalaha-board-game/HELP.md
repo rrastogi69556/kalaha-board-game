@@ -147,6 +147,9 @@ Game Moving Stone Operation:
 Game End: 
 ![img_5.png](img_5.png)
 
+Swagger: 
+![img_6.png](img_6.png)
+
 # Getting Started
 
 ### Reference Documentation
