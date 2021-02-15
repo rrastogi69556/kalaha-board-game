@@ -41,7 +41,7 @@ public class SowHelper {
         //this is for last stone
         currentPit = game.getPit(calculateAndGetNextPitIdForSowingStones(game.getCurrentPit(), TOTAL_PITS));
         //last stone - check if it is placed on empty pit (take opposite stones) or largePit(again current Player's turn)
-        String expectedTurn = sowAndGetTurnForLastStone(game, numberOfStones, stoneCount, currentPit);
+        String expectedTurn = sowAndGetPlayerTurnForLastStone(game, numberOfStones, stoneCount, currentPit);
         game.setSwitchTurn(expectedTurn);
         switchTurnsIfLastStoneNotEndInLargePit(game, game.getSwitchTurn());
 
@@ -63,7 +63,7 @@ public class SowHelper {
         return stoneCount;
     }
 
-    public String sowAndGetTurnForLastStone(BoardGame game, int numberOfStones, int currentStoneNumber, Pit currentPit) {
+    public String sowAndGetPlayerTurnForLastStone(BoardGame game, int numberOfStones, int currentStoneNumber, Pit currentPit) {
         int addStones = 1;
         String canSwitchTurn = TRUE;
         if (isLastStoneInPit(numberOfStones, currentStoneNumber)) {
@@ -73,32 +73,40 @@ public class SowHelper {
                 currentPit = game.getPit(nextPitIdx);
             }
            if (isSmallPitEmptyForActivePlayer(game, currentPit)) {
-                //check opposite pit
+                //check opposite pit not empty
                if(canSowOppositeStonesInOwnLargePit(game, currentPit)) {
                    Pit oppositePit = getOppositePit(game, currentPit);
                    addStones = fetchAndResetOppositeStones(game, addStones, oppositePit) ;
-                   Pit largePit = game.getPit(game.getLargePitIndexOfActivePlayer());
-                   largePit.addStones(addStones);
-                   currentPit.invalidateStones();
-                   game.setPit(currentPit.getId(), currentPit);
-                   game.setPit(game.getLargePitIndexOfActivePlayer(), largePit);
+                   updateCurrentAndLargePitOfActivePlayer(game, currentPit, addStones);
                    return canSwitchTurn;
                }
-               if(game.isCaptureIfOppositeEmpty()) {
-                   Pit largePit = game.getPit(game.getLargePitIndexOfActivePlayer());
-                   largePit.addStones(addStones);
-                   currentPit.invalidateStones();
-                   game.setPit(currentPit.getId(), currentPit);
-                   game.setPit(game.getLargePitIndexOfActivePlayer(), largePit);
-               } else {
-                   updateStonesInPit(game, currentPit, addStones);
-               }
-
-                return canSwitchTurn;
+                // user choose to capture or not , if empty
+               captureIfOppositePitEmpty(game, currentPit, addStones);
+               return canSwitchTurn;
             }
         }
         updateStonesInPit(game, currentPit, addStones);
         return canSwitchTurn;
+    }
+
+    private void captureIfOppositePitEmpty(BoardGame game, Pit currentPit, int addStones) {
+        if(game.isCaptureIfOppositeEmpty()) {
+            updateCurrentAndLargePitOfActivePlayer(game, currentPit, addStones);
+        } else {
+            updateStonesInPit(game, currentPit, addStones);
+        }
+    }
+
+    private void updateCurrentAndLargePitOfActivePlayer(BoardGame game, Pit currentPit, int addStones) {
+        // get and set stones to Large Pit of active player
+        Pit largePit = game.getPit(game.getLargePitIndexOfActivePlayer());
+        largePit.addStones(addStones);
+
+        currentPit.invalidateStones();
+
+        //update current and large pit
+        game.setPit(currentPit.getId(), currentPit);
+        game.setPit(game.getLargePitIndexOfActivePlayer(), largePit);
     }
 
     public boolean canSowOppositeStonesInOwnLargePit(BoardGame game, Pit currentPit) {

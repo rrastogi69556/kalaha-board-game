@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import static com.bol.interview.kalahaweb.constants.ErrorConstants.ERROR_SOW_STONES_API_CALL;
 import static com.bol.interview.kalahaweb.constants.ErrorConstants.INTERRUPTED_EXCEPTION_OCCURRED;
+import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.PIT_NUMBER_TO_SOW;
 import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.THEME;
 import static com.bol.interview.kalahaweb.constants.LogConstants.WARN_GAME_NOT_STARTED;
 
@@ -93,7 +94,7 @@ public class Pit extends VerticalLayout {
                 return;
             }
 
-            Notification.show(e.getSource().getTabIndex() + " Pit Selected");
+            Notification.show(e.getSource().getTabIndex() + PIT_NUMBER_TO_SOW);
             try {
                 this.gameController.sow(e.getSource().getTabIndex());
             } catch (KalahaGameException ex) {

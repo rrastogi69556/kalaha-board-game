@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_GAME_UPDATED;
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_SOW_API_INVOKED;
 import static com.bol.interview.kalahaapi.constants.api.URLMappingConstants.*;
 
 @Slf4j
@@ -46,7 +48,7 @@ public class SowController extends BaseController implements ISowController {
     @CrossOrigin(origins= KALAHA_API_URL, allowedHeaders = "*")
     public ResponseEntity<String> moveStones( @PathVariable(value ="gameId") String gameId,
                                       @PathVariable(value = "pitIndex") Integer pitIndex) throws Exception {
-        log.info("Move Api is called.");
+        log.info(INFO_SOW_API_INVOKED);
         String errorMessage = validationService.validateGameId(gameId);
 
         if (!errorMessage.isEmpty()) {
@@ -58,7 +60,7 @@ public class SowController extends BaseController implements ISowController {
 
         game = sowService.sowStonesAndGetGame(game, pitIndex);
         game = cacheService.updateAndGetGame(game);
-        log.info("Game updated!");
+        log.info(INFO_GAME_UPDATED);
         return ResponseEntity.ok(getJsonMapper().writeValueAsString(game));
     }
 }

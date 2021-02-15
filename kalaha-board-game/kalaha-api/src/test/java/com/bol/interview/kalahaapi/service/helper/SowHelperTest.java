@@ -54,7 +54,7 @@ public class SowHelperTest {
     public void when_lastStoneInLargePitForPlayer1_expect_noSwitchTurn() {
         game.setActivePlayer(PLAYER_1);
         game.setCurrentPit(PLAYER_1_LARGE_PIT);
-        String canSwitchTurn = sowHelper.sowAndGetTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_1_LARGE_PIT));
+        String canSwitchTurn = sowHelper.sowAndGetPlayerTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_1_LARGE_PIT));
         assertEquals(EXPECT_TURN_FALSE, canSwitchTurn);
     }
 
@@ -65,7 +65,7 @@ public class SowHelperTest {
     public void when_lastStoneInLargePitForPlayer2_expect_noSwitchTurn() {
         game.setActivePlayer(PLAYER_2);
         game.setCurrentPit(PLAYER_2_LARGE_PIT);
-        String canSwitchTurn = sowHelper.sowAndGetTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_2_LARGE_PIT));
+        String canSwitchTurn = sowHelper.sowAndGetPlayerTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_2_LARGE_PIT));
         assertEquals(EXPECT_TURN_FALSE, canSwitchTurn);
     }
 
@@ -73,7 +73,7 @@ public class SowHelperTest {
     public void when_lastStoneInSmallPitForPlayer1_expect_switchTurn() {
         game.setActivePlayer(PLAYER_1);
         game.setCurrentPit(PLAYER_1_SELECTED_SMALL_PIT);
-        String shouldSwitchTurn = sowHelper.sowAndGetTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_1_SELECTED_SMALL_PIT));
+        String shouldSwitchTurn = sowHelper.sowAndGetPlayerTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(PLAYER_1_SELECTED_SMALL_PIT));
         assertEquals(EXPECT_TURN_TRUE, shouldSwitchTurn);
     }
 
@@ -81,7 +81,7 @@ public class SowHelperTest {
     public void when_lastStoneInSmallPitForPlayer2_expect_switchTurn() {
         game.setActivePlayer(PLAYER_2);
         game.setCurrentPit(PLAYER_2_SELECTED_SMALL_PIT);
-        String shouldSwitchTurn = sowHelper.sowAndGetTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(game.getCurrentPit()));
+        String shouldSwitchTurn = sowHelper.sowAndGetPlayerTurnForLastStone(game, STONES_IN_SMALL_PIT, CURRENT_STONE_NUMBER, game.getPit(game.getCurrentPit()));
         assertEquals(EXPECT_TURN_TRUE, shouldSwitchTurn);
     }
     @Test

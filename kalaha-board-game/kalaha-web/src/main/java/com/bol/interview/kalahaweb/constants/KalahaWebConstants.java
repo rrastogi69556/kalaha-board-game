@@ -54,6 +54,7 @@ public class KalahaWebConstants {
     public static final String THEME = "theme";
     public static final String BUTTON_MATERIAL_THEME_CONTAINED = "contained";
     public static final String SHOULD_CAPTURE_STONES_IF_OPPOSITE_EMPTY = "Capture Stones if opposite Pit Empty ? ";
+    public static final String PIT_NUMBER_TO_SOW = " Pit Selected to sow ";
 
 
 }

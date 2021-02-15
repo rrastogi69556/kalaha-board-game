@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.DEFAULT_STONES;
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.SHOULD_CAPTURE_IF_OPPOSITE_PIT_EMPTY;
-import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_GAME_INITIALIZED;
-import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_GAME_INSTANCE;
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.*;
 import static com.bol.interview.kalahaapi.constants.api.URLMappingConstants.KALAHA_CREATE_GAME;
 import static java.util.Objects.nonNull;
 
@@ -69,7 +68,7 @@ public class InitializeGameController extends BaseController implements IInitial
             }
         }
 
-        log.info("Generating Game id...");
+        log.info(INFO_GAME_ID_GENERATING);
 
         BoardGame game = initializeService.initializeGameAndGet(jsonRequest);
         log.info(String.format(INFO_GAME_INITIALIZED, game.getId()));

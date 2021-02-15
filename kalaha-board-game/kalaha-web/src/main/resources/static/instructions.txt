@@ -14,7 +14,10 @@ gets another turn. This can be repeated several times before it's the other play
 <br/>
 During the game the pits are emptied on both sides. Always when the last stone lands in an own
 empty pit, the player captures his own stone and all stones in the opposite pit (the other player’s
-pit) and puts them in his own large pit. A benefit might be given (it asks your choice) when last stone lands in empty pit and just across on the opposite other side, the opponent's pit (opposite small pit) is empty. In such a scenario, player can choose to capture( or not) that stone in his own kalaha store(large pit - present on right side of each player). This is optional.Default is yes - capture stones in Own Large Pit.
+pit) and puts them in his own large pit. A benefit might be given (it asks your choice) when last stone
+lands in empty pit and just across on the opposite other side, the opponent's pit (opposite small pit) is empty.
+In such a scenario, player can choose to capture( or not) that stone in his own kalaha store(large pit - present on right side of each player).
+This is optional.Default is yes - capture stones in Own Large Pit(suggested for easy finish).
 <br/>
 <br/>
 <b>The Game Ends</b>
