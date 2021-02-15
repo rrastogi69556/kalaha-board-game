@@ -34,7 +34,7 @@ public class CacheService implements ICacheService {
 
     @Cacheable(cacheNames  = "kalahaCache", key = "#gameId" , unless = "#result  == null")
     @Override
-    public BoardGame fetchGameById(String gameId) throws KalahaGameException{
+    public BoardGame fetchGameById(String gameId) {
 
         Optional<BoardGame> game = repository.findById(gameId);
 

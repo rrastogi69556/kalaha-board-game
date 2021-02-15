@@ -8,7 +8,7 @@ import java.util.Objects;
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.RIGHT_SIDE_LARGE_PIT;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_1;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_2;
-import static com.bol.interview.kalahaapi.enums.GameStatus.IN_PROGRESS;
+import static com.bol.interview.kalahaapi.enums.EGameStatus.IN_PROGRESS;
 import static java.util.Objects.isNull;
 import static java.util.stream.Collectors.toList;
 

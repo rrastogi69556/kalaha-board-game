@@ -1,6 +1,6 @@
 package com.bol.interview.kalahaapi.api.model;
 
-import com.bol.interview.kalahaapi.enums.GameStatus;
+import com.bol.interview.kalahaapi.enums.EGameStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +19,6 @@ public class GameResult implements Serializable {
 
     private static final long serialVersionUID = -4967840202989160604L;
     private String messageUI;
-    private GameStatus gameStatus;
+    private EGameStatus gameStatus;
 
 }

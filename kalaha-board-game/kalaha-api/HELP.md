@@ -40,6 +40,8 @@ This api has following endpoints exposed:
 
 WEB : `kalaha-web`
 --
+#### Naming conventions:
+Starting with `I - Interface`, `E - Enum`
 
 This module is the interface between User and kalaha-api. This uses Vaadin - Java based UI web framework.
 

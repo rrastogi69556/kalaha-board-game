@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.*;
 import static com.bol.interview.kalahaweb.constants.LogConstants.INFO_GAME_DELETED;
-import static com.bol.interview.kalahaweb.enums.GameStatus.OVER;
+import static com.bol.interview.kalahaweb.enums.EGameStatus.OVER;
 import static com.bol.interview.kalahaweb.utils.UiUtils.disablePlayerPits;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;

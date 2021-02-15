@@ -19,7 +19,7 @@ import static com.bol.interview.kalahaapi.constants.api.URLMappingConstants.*;
 
 @Slf4j
 @RestController
-@Api(value = "Kalaha Game. Contains endpoints for moving operations")
+@Api(value = "Kalaha Game. Contains endpoints for moving stone operations")
 public class SowController extends BaseController implements ISowController {
     private static final String API_MOVE_STONES_TAG = "KALAHA_MOVE_STONES_FROM_PITS";
 
@@ -37,7 +37,7 @@ public class SowController extends BaseController implements ISowController {
     }
 
     @PutMapping(KALAHA_MOVE_STONES_PATH)
-    @ApiOperation(value = "Returns instance of BoardGame", response = String.class, tags = {API_MOVE_STONES_TAG}, produces = "Application/JSON", httpMethod = "PUT")
+    @ApiOperation(value = "Returns updated instance of BoardGame", response = String.class, tags = {API_MOVE_STONES_TAG}, produces = "Application/JSON", httpMethod = "PUT")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gameId", value = "Represents unique gameId. Mandatory.", required = true, dataType = "java.lang.String", paramType = "path"),
             @ApiImplicitParam(name = "pitIndex", value = "Represents selected pit for moving stones.", required = true, dataType = "java.lang.Integer", paramType = "path")

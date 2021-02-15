@@ -10,7 +10,7 @@ import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.*;
 import static com.bol.interview.kalahaapi.constants.api.MessageUIConstants.*;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_1;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_2;
-import static com.bol.interview.kalahaapi.enums.GameStatus.OVER;
+import static com.bol.interview.kalahaapi.enums.EGameStatus.OVER;
 import static org.apache.logging.log4j.util.Strings.EMPTY;
 import static org.apache.logging.log4j.util.Strings.isNotEmpty;
 

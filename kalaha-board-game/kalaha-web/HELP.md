@@ -43,6 +43,9 @@ WEB : `kalaha-web`
 
 This module is the interface between User and kalaha-api. This uses Vaadin - Java based UI web framework.
 
+#### Naming conventions:
+Starting with `I - Interface`, `E - Enum`
+
 ## Running Instructions:
 
 - Make sure you have :

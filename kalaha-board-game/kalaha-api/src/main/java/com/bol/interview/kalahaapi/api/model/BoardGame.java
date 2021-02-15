@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.*;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_1;
-import static com.bol.interview.kalahaapi.enums.GameStatus.STARTED;
+import static com.bol.interview.kalahaapi.enums.EGameStatus.STARTED;
 
 /**
  * This is the main holder for the game instance.Useful for WEB and API consumers

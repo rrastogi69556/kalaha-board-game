@@ -1,6 +1,6 @@
 package com.bol.interview.kalahaapi.enums;
 
-public enum GameStatus {
+public enum EGameStatus {
     STARTED, IN_PROGRESS, OVER
 
 }

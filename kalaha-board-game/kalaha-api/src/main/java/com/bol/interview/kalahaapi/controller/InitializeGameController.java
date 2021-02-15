@@ -28,7 +28,7 @@ import static java.util.Objects.nonNull;
 
 @Slf4j
 @RestController
-@Api(value = "Kalaha Game. Contains endpoints for creating game operations")
+@Api(value = "Kalaha Game. Contains endpoints for creating game instances.")
 public class InitializeGameController extends BaseController implements IInitializeGameController {
 
     private static final String API_CREATE_TAG = "KALAHA_CREATE_GAME";
@@ -48,7 +48,7 @@ public class InitializeGameController extends BaseController implements IInitial
         this.cacheService = cacheService;
     }
 
-    @ApiOperation(value = "Returns instance of BoardGame", response = String.class, tags = {API_CREATE_TAG}, produces = "Application/JSON", httpMethod = "POST")
+    @ApiOperation(value = "Returns new instance of BoardGame", response = String.class, tags = {API_CREATE_TAG}, produces = "Application/JSON", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "stonesPerPit", value = "Represents number of stones per pit. Default is 6. Optional", required = false, dataType = "java.lang.Integer", paramType = "query"),
     })

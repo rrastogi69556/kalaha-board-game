@@ -24,6 +24,9 @@ Both the modules interact using the request-response protocol i.e web requests a
 REST API : `kalaha-api`
 --
 
+#### Naming conventions:
+Starting with `I - Interface`, `E - Enum`
+
 
 This api has following endpoints exposed: 
 - `Create Game`  
@@ -124,6 +127,25 @@ Please make sure no servers are running as this applications uses below ports : 
 * Once docker containers are up : 
   - `docker container ls`, `docker images -a`, `docker network ls`, `docker volume ls`
   - Go to `http://localhost:8080/kalaha`
+#Snapshots:
+
+New Page: 
+![img.png](img.png)
+
+Show Instructions:
+![img_1.png](img_1.png)
+
+Show Assumptions:
+![img_2.png](img_2.png)
+
+User Options while starting game:
+![img_3.png](img_3.png)
+
+Game Moving Stone Operation:
+![img_4.png](img_4.png)
+
+Game End: 
+![img_5.png](img_5.png)
 
 # Getting Started
 

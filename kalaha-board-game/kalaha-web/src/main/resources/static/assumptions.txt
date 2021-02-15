@@ -13,3 +13,4 @@ Refer instructions guide first by clicking on the <u>Show Instructions</u> butto
 4. A benefit might be given when last stone lands in empty pit and  just across on the opposite other side, the opponent's pit (opposite small pit) is empty. In such a scenario,
    player can capture that stone in his own kalaha store(large pit - present on right side of each player). This is optional.
 <br/>
+5. No Session handling is considered currently.

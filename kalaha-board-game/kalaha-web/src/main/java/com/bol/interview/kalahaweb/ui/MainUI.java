@@ -68,23 +68,17 @@ public class MainUI extends VerticalLayout {
 
 		Dialog instructions = displayDialog(GAME_INSTRUCTION_MESSAGE, CLASSPATH_INSTRUCTIONS_FILE_PATH, CONFIRM_BUTTON_MESSAGE);
 		add(instructions);
-		instructionsBtn.addClickListener(e -> {
-			instructions.open();
-		});
+		instructionsBtn.addClickListener(e -> instructions.open());
 
 
 		Dialog assumptionsDialog = displayDialog(GAME_ASSUMPTION_MESSAGE, CLASSPATH_ASSUMPTIONS_FILE_PATH, CONFIRM_BUTTON_MESSAGE);
 		add(assumptionsDialog);
-		assumptionsBtn.addClickListener(e -> {
-			assumptionsDialog.open();
-		});
+		assumptionsBtn.addClickListener(e -> assumptionsDialog.open());
 
 
 		Dialog startButtonDialog = displayStartButtonDialog();
 		add(startButtonDialog);
-        startGameBtn.addClickListener(e -> {
-			startButtonDialog.open();
-        });
+        startGameBtn.addClickListener(e -> startButtonDialog.open());
 
 
 		setAlignItems(Alignment.CENTER);
@@ -115,9 +109,7 @@ public class MainUI extends VerticalLayout {
 
 			startGameDialog.close();
 		});
-		Button cancelButton = new Button(DISCARD_BUTTON , new Icon(VaadinIcon.THUMBS_DOWN), buttonClickEvent -> {
-			startGameDialog.close();
-		});
+		Button cancelButton = new Button(DISCARD_BUTTON , new Icon(VaadinIcon.THUMBS_DOWN), buttonClickEvent -> startGameDialog.close());
 
 		startGameDialog.add(confirmButton, cancelButton);
 	}
@@ -130,10 +122,8 @@ public class MainUI extends VerticalLayout {
 		radioGroup.addThemeVariants(RadioGroupVariant.MATERIAL_VERTICAL);
 		radioGroup.setValue("Yes");
 		jsonRequest.setCaptureIfOppositeEmpty(true);
-		radioGroup.addValueChangeListener(event -> {
+		radioGroup.addValueChangeListener(event -> jsonRequest.setCaptureIfOppositeEmpty(event.getValue().equalsIgnoreCase("Yes")));
 
-			jsonRequest.setCaptureIfOppositeEmpty(event.getValue().equalsIgnoreCase("Yes"));
-		});
 		return radioGroup;
 	}
 
