@@ -1,7 +1,8 @@
 package com.bol.interview.kalahaweb.constants;
 
-import static org.apache.commons.lang3.StringUtils.EMPTY;
-
+/**
+ * This is the central place for web constants.
+ */
 public class KalahaWebConstants {
 
     private KalahaWebConstants(){}
@@ -17,7 +18,6 @@ public class KalahaWebConstants {
     public static final Integer TOTAL_PITS = 14 ;
     public static final Integer LEFT_SIDE_LARGE_PIT = TOTAL_PITS ;
     public static final Integer RIGHT_SIDE_LARGE_PIT = TOTAL_PITS/2 ;
-    public static final String NO_LOCATION_TO_BE_PASSED = EMPTY ;
     public static final Integer DEFAULT_STONES = 6 ;
     public static final String CLASSPATH_INSTRUCTIONS_FILE_PATH = "classpath:static/instructions.txt";
     public static final String CLASSPATH_ASSUMPTIONS_FILE_PATH = "classpath:static/assumptions.txt";
@@ -38,7 +38,7 @@ public class KalahaWebConstants {
     public static final Integer PIT_12 = 12;
     public static final Integer PIT_13 = 13;
     public static final Integer PIT_14 = 14;
-    public static final String DELETE_QUERY = "<br/><br/>Do you want to save the game instance for future?";
+    public static final String DELETE_QUERY = "<br/><br/>Do you want to save the game instance for future?<br/>Note: Discard will delete the instance from database!";
     public static final String PLAYER_TURN = "Turn:";
     public static final String OK_BUTTON = "Ok";
     public static final String CONFIRM_BUTTON = " Confirm ";

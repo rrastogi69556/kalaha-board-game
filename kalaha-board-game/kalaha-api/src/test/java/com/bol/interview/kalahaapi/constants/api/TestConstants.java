@@ -5,6 +5,7 @@ public class TestConstants {
     // for simplicity
     public static final int STONES_PER_PIT_4 = 4;
     public static final int STONES_PER_PIT_6 = 6;
+    public static final int INVALID_STONES = -1;
     public static final int TOTAL_PITS = 14;
     public static final int PLAYER_1_LARGE_PIT = 14;
     public static final int PLAYER_2_LARGE_PIT = 7;
@@ -37,5 +38,7 @@ public class TestConstants {
     public static final int PIT_INDEX_12 = 12;
     public static final int PIT_INDEX_13 = 13;
     public static final int PIT_INDEX_14 = 14;
+    public static final String INVALID_GAME_ID_RESPONSE = "Either Game id is invalid, non-existing, null/empty or negative.";
+
 
 }

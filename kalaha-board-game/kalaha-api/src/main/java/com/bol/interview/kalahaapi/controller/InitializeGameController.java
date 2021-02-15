@@ -14,12 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.DEFAULT_STONES;
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.SHOULD_CAPTURE_IF_OPPOSITE_PIT_EMPTY;
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_GAME_INITIALIZED;
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.INFO_GAME_INSTANCE;
 import static com.bol.interview.kalahaapi.constants.api.URLMappingConstants.KALAHA_CREATE_GAME;
 import static java.util.Objects.nonNull;
 
@@ -51,7 +54,7 @@ public class InitializeGameController extends BaseController implements IInitial
     })
     @PostMapping(KALAHA_CREATE_GAME)
 
-    //@CrossOrigin(origins= "http://kalaha-api:8011/", allowedHeaders = "*")
+    @CrossOrigin(origins= "http://kalaha-api:8011/", allowedHeaders = "*")
     @Override
     public ResponseEntity<String> createGame(@RequestBody(required = false) JsonRequest jsonRequest) throws Exception {
 
@@ -69,11 +72,11 @@ public class InitializeGameController extends BaseController implements IInitial
         log.info("Generating Game id...");
 
         BoardGame game = initializeService.initializeGameAndGet(jsonRequest);
-        log.info("New Kalaha game initialized with id {}", game.getId());
+        log.info(String.format(INFO_GAME_INITIALIZED, game.getId()));
 
         game = cacheService.saveAndGetGame(game);
 
-        log.info("Game instance : [ {} ]", game );
+        log.info(String.format(INFO_GAME_INSTANCE, game));
 
         return ResponseEntity.ok(getJsonMapper().writeValueAsString(game));
     }

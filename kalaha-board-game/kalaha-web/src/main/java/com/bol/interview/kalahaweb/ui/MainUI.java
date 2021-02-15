@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.*;
 import static com.bol.interview.kalahaweb.constants.LogConstants.INFO_GAME_STARTED;
 import static com.bol.interview.kalahaweb.utils.UiUtils.displayDialog;
+import static com.bol.interview.kalahaweb.utils.UiUtils.enablePlayerPits;
 
 @Route ("kalaha")
 @Slf4j
@@ -109,6 +110,9 @@ public class MainUI extends VerticalLayout {
 		Button confirmButton = new Button(CONFIRM_BUTTON, new Icon(VaadinIcon.THUMBS_UP), buttonClickEvent -> {
 			jsonRequest.setStonesPerPit(Integer.valueOf(input.getValue()));
 			sendUrlToApi(jsonRequest);
+
+			enablePlayerPits(this.gameUI);
+
 			startGameDialog.close();
 		});
 		Button cancelButton = new Button(DISCARD_BUTTON , new Icon(VaadinIcon.THUMBS_DOWN), buttonClickEvent -> {
@@ -150,7 +154,7 @@ public class MainUI extends VerticalLayout {
 			gameUI.setGameIdTextField(game.getId());
 			gameUI.getPlayerTurnTextField().setValue("");
 
-			Notification.show(INFO_GAME_STARTED + game.getId(), 3000, Notification.Position.MIDDLE);
+			Notification.show(INFO_GAME_STARTED + game.getId(), 3000, Notification.Position.BOTTOM_CENTER);
 
 		} catch (KalahaGameException ex) {
 			Notification.show("Error!. Message:" + ex.getMessage());

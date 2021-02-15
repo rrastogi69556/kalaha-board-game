@@ -13,7 +13,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class InstructionsDialog extends Dialog {
 
     private Label title;
-    private Paragraph question;
+    private Paragraph textArea;
     private Button confirm;
 
     public InstructionsDialog() {
@@ -25,7 +25,7 @@ public class InstructionsDialog extends Dialog {
     public InstructionsDialog(String title, String content, ComponentEventListener listener) {
         this();
         setTitle(title);
-        setQuestion(content);
+        setTextArea(content);
         addConfirmationListener(listener);
     }
 
@@ -33,8 +33,8 @@ public class InstructionsDialog extends Dialog {
         this.title.setText(title);
     }
 
-    public void setQuestion(String question) {
-        this.question.getElement().setProperty("innerHTML", question);
+    public void setTextArea(String textArea) {
+        this.textArea.getElement().setProperty("innerHTML", textArea);
     }
 
     public void addConfirmationListener(ComponentEventListener listener) {
@@ -56,10 +56,10 @@ public class InstructionsDialog extends Dialog {
 
 
     private void createContent() {
-        question = new Paragraph();
+        textArea = new Paragraph();
 
         VerticalLayout content = new VerticalLayout();
-        content.add(question);
+        content.add(textArea);
         content.setPadding(true);
         add(content);
     }

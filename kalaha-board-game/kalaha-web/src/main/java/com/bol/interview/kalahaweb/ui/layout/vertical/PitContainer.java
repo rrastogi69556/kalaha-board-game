@@ -35,21 +35,23 @@ public class PitContainer extends VerticalLayout implements KeyNotifier {
     HorizontalLayout player1Pits;
 
     public PitContainer(GameController gameController) {
-        this.pit1 = new Pit(1, gameController);
-        this.pit2 = new Pit(2, gameController);
-        this.pit3 = new Pit(3, gameController);
-        this.pit4 = new Pit(4, gameController);
-        this.pit5 = new Pit(5, gameController);
-        this.pit6 = new Pit(6, gameController);
+        this.pit1 = new Pit(PIT_1, gameController);
+        this.pit2 = new Pit(PIT_2, gameController);
+        this.pit3 = new Pit(PIT_3, gameController);
+        this.pit4 = new Pit(PIT_4, gameController);
+        this.pit5 = new Pit(PIT_5, gameController);
+        this.pit6 = new Pit(PIT_6, gameController);
 
-        this.pit8 = new Pit(8, gameController);
-        this.pit9 = new Pit(9, gameController);
-        this.pit10 = new Pit(10, gameController);
-        this.pit11 = new Pit(11, gameController);
-        this.pit12 = new Pit(12, gameController);
-        this.pit13 = new Pit(13, gameController);
+        this.pit8 = new Pit(PIT_8, gameController);
+        this.pit9 = new Pit(PIT_9, gameController);
+        this.pit10 = new Pit(PIT_10, gameController);
+        this.pit11 = new Pit(PIT_11, gameController);
+        this.pit12 = new Pit(PIT_12, gameController);
+        this.pit13 = new Pit(PIT_13, gameController);
         player2Pits = new HorizontalLayout(pit1, pit2, pit3, pit4, pit5, pit6);
         player1Pits = new HorizontalLayout(pit13, pit12, pit11, pit10, pit9, pit8);
+        player1Pits.setEnabled(false);
+        player2Pits.setEnabled(false);
         add(player1Pits, player2Pits);
     }
 

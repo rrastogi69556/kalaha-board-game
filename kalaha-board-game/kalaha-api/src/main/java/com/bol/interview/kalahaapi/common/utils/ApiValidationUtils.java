@@ -3,6 +3,7 @@ package com.bol.interview.kalahaapi.common.utils;
 import com.bol.interview.kalahaapi.abstraction.service.ICacheService;
 import com.bol.interview.kalahaapi.exception.KalahaGameException;
 
+import static com.bol.interview.kalahaapi.constants.api.LogConstants.*;
 import static org.apache.logging.log4j.util.Strings.EMPTY;
 import static org.apache.logging.log4j.util.Strings.isEmpty;
 
@@ -19,11 +20,11 @@ public class ApiValidationUtils {
             if (gameId instanceof String) {
                 String id = (String) gameId;
                 if (cache == null || null == cache.fetchGameById(id) || isEmpty(id)) {
-                    message = "Either Game id is invalid, non-existing, null/empty or negative.";
+                    message = ERROR_INVALID_GAME_ID;
                 }
             }
         }catch(KalahaGameException kge) {
-            message = "Exception occurred while fetching game from cache.Probably, cache is evicted";
+            message = ERROR_GAME_NOT_FOUND_IN_CACHE;
         }
         return message;
     }
@@ -31,7 +32,7 @@ public class ApiValidationUtils {
     public static String throwErrorMessageIfInvalidStones(Integer stonesPerPit) {
         String message = EMPTY;
         if (stonesPerPit == null || stonesPerPit <= 0 || stonesPerPit >= Integer.MAX_VALUE) {
-            message = "Invalid number of stones passed. Required non-negative stones or too large value.";
+            message = ERROR_INVALID_STONES;
         }
         return message;
     }

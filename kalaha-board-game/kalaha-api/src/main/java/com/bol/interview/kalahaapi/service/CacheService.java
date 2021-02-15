@@ -1,5 +1,6 @@
 package com.bol.interview.kalahaapi.service;
 
+import com.bol.interview.kalahaapi.abstraction.controller.ICacheController;
 import com.bol.interview.kalahaapi.abstraction.service.ICacheService;
 import com.bol.interview.kalahaapi.exception.KalahaGameException;
 import com.bol.interview.kalahaapi.api.model.BoardGame;
@@ -16,6 +17,9 @@ import java.util.Optional;
 import static com.bol.interview.kalahaapi.constants.api.LogConstants.*;
 import static org.apache.logging.log4j.util.Strings.isEmpty;
 
+/**
+ * This class serves the purpose of saving,fetching the game instances from cache,DB. Invoked by {@link ICacheController}
+ */
 @Service
 @Slf4j
 public class CacheService implements ICacheService {

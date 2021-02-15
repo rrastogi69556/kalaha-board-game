@@ -1,6 +1,7 @@
 package com.bol.interview.kalahaweb.utils;
 
 import com.bol.interview.kalahaweb.ui.component.InstructionsDialog;
+import com.bol.interview.kalahaweb.ui.layout.vertical.GameUI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.icon.Icon;
@@ -12,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
@@ -45,7 +47,7 @@ public class UiUtils {
     public static Dialog displayDialog(String title, String location, String confirmButtonMessage){
         InstructionsDialog instructionsDialog = new InstructionsDialog();
         instructionsDialog.setTitle(title);
-        instructionsDialog.setQuestion(getContentsFromFileLocation(location));
+        instructionsDialog.setTextArea(getContentsFromFileLocation(location));
         instructionsDialog.setCloseOnOutsideClick(false);
         instructionsDialog.setCloseOnEsc(false);
         Button confirmButton = new Button(confirmButtonMessage , new Icon(VaadinIcon.THUMBS_UP), buttonClickEvent -> {
@@ -53,5 +55,19 @@ public class UiUtils {
         });
         instructionsDialog.add(confirmButton);
         return instructionsDialog;
+    }
+
+    public static void enablePlayerPits(GameUI gameUI) {
+        if(nonNull(gameUI.getPitContainer())) {
+            gameUI.getPitContainer().getPlayer1Pits().setEnabled(true);
+            gameUI.getPitContainer().getPlayer2Pits().setEnabled(true);
+        }
+    }
+
+    public static void disablePlayerPits(GameUI gameUI) {
+        if(nonNull(gameUI.getPitContainer())) {
+            gameUI.getPitContainer().getPlayer1Pits().setEnabled(false);
+            gameUI.getPitContainer().getPlayer2Pits().setEnabled(false);
+        }
     }
 }

@@ -24,7 +24,9 @@ import org.springframework.stereotype.Component;
 import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.*;
 import static com.bol.interview.kalahaweb.constants.LogConstants.INFO_GAME_DELETED;
 import static com.bol.interview.kalahaweb.enums.GameStatus.OVER;
+import static com.bol.interview.kalahaweb.utils.UiUtils.disablePlayerPits;
 import static java.util.Objects.nonNull;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 @UIScope
@@ -35,6 +37,8 @@ public class GameUI extends VerticalLayout implements KeyNotifier {
 
 
     private static final long serialVersionUID = 7639707270385173198L;
+    public static final String PLAYER_2_LABEL = "Player 2";
+    public static final String PLAYER_1_LABEL = "Player 1";
     Label playerTurnLabel;
     TextField playerTurnTextField;
     InstructionsDialog canDeleteGameDialog;
@@ -63,13 +67,15 @@ public class GameUI extends VerticalLayout implements KeyNotifier {
         add(gameIdTurnLayout);
 
 
-        this.rightLargePit = new Pit(7, gameController);
+        this.rightLargePit = new Pit(PIT_7, gameController);
         this.rightLargePit.setAlignItems(Alignment.CENTER);
-        this.rightLargePit.add(new Label("Player 2"));
+        this.rightLargePit.add(new Label(PLAYER_2_LABEL));
+        this.rightLargePit.setEnabled(false);
 
-        this.leftLargePit = new Pit(14, gameController);
+        this.leftLargePit = new Pit(PIT_14, gameController);
         this.leftLargePit.setAlignItems(Alignment.CENTER);
-        this.leftLargePit.add(new Label("Player 1"));
+        this.leftLargePit.add(new Label(PLAYER_1_LABEL));
+        this.leftLargePit.setEnabled(false);
 
         HorizontalLayout gameLayout = new HorizontalLayout(leftLargePit, pitContainer, rightLargePit);
         gameLayout.setAlignItems(Alignment.CENTER);
@@ -132,17 +138,24 @@ public class GameUI extends VerticalLayout implements KeyNotifier {
                 !isEmpty(game.getGameResult().getMessageUI())) {
 
             if (game.getGameResult().getGameStatus() == OVER) {
+                disableAndInvalidateActiveFields();
                 popUpDeleteDialogBox(game);
             } else {
-                canDeleteGameDialog.setQuestion(game.getGameResult().getMessageUI());
+                canDeleteGameDialog.setTextArea(game.getGameResult().getMessageUI());
             }
             canDeleteGameDialog.setVisible(true);
             canDeleteGameDialog.open();
         }
     }
 
+    private void disableAndInvalidateActiveFields() {
+        disablePlayerPits(this);
+        gameIdTextField.setValue(EMPTY);
+        playerTurnTextField.setValue(EMPTY);
+    }
+
     private void popUpDeleteDialogBox(BoardGame game) {
-        this.canDeleteGameDialog.setQuestion(game.getGameResult().getMessageUI() + DELETE_QUERY);
+        this.canDeleteGameDialog.setTextArea(game.getGameResult().getMessageUI() + DELETE_QUERY);
         Button cancelButton = new Button("Discard", new Icon(VaadinIcon.THUMBS_DOWN), buttonClickEvent -> {
             callApi(game.getId());
             canDeleteGameDialog.close();
@@ -192,5 +205,9 @@ public class GameUI extends VerticalLayout implements KeyNotifier {
         if(response.equalsIgnoreCase(DELETE_RESPONSE)) {
             Notification.show(INFO_GAME_DELETED, 3000, Notification.Position.MIDDLE);
         }
+    }
+
+    public PitContainer getPitContainer() {
+        return pitContainer;
     }
 }
