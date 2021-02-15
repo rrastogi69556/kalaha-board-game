@@ -16,8 +16,8 @@ public class BoardGame {
     private EPlayer activePlayer;
     private Integer currentPit;
     private String switchTurn;
-    private String messageUI;
     private GameResult gameResult;
+    private boolean captureIfOppositeEmpty;
 
     public Pit getPit(Integer pitIdx){
         try {
@@ -56,16 +56,13 @@ public class BoardGame {
         return id;
     }
 
-    public String getMessageUI() {
-        return messageUI;
-    }
-
     @Override
     public String toString() {
         return "BoardGame [ " +
                 "id: " + id +
                 ", activePlayer: " + activePlayer +
                 ", currentPit: " + currentPit +
-                ", switchTurn: " + switchTurn ;
+                ", switchTurn: " + switchTurn +
+                ", captureIfOppositeEmpty: " + captureIfOppositeEmpty ;
     }
 }

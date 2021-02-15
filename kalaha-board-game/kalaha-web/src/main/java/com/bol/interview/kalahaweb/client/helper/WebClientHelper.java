@@ -24,7 +24,7 @@ public class WebClientHelper {
                 writeValueAsString(gameResponse.getBody());
     }
 
-    public ResponseEntity<String> postAndFetchResponseFromCreateGameApi(String url, HttpEntity<String> httpEntityRequest, RestTemplate restTemplate) throws JsonProcessingException {
+    public ResponseEntity<String> postAndFetchResponseFromCreateGameApi(String url, HttpEntity<String> httpEntityRequest, RestTemplate restTemplate) {
         return restTemplate.postForEntity(url, httpEntityRequest, String.class);
     }
 

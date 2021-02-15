@@ -29,7 +29,7 @@ public class WebClient {
 
     private final RestTemplate restTemplate;
     private final WebClientConfig webClientConfig;
-    private final ObjectMapper jsonMapper = new ObjectMapper()
+    final ObjectMapper jsonMapper = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(SerializationFeature.WRAP_ROOT_VALUE, false);
     private final WebClientHelper webClientHelper;

@@ -1,5 +1,6 @@
 package com.bol.interview.kalahaweb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class Pit {
     private boolean isLargePit;
 
 
+    @JsonIgnore
     public boolean isEmpty() {
         return getStones() == EMPTY_PIT;
     }
@@ -25,6 +27,11 @@ public class Pit {
 
     public void invalidateStones() {
         this.stones = 0;
+    }
+
+    @JsonIgnore
+    public boolean isLargePit() {
+        return isLargePit;
     }
 
     @Override
