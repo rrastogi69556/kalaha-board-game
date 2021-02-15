@@ -36,6 +36,8 @@ This api has following endpoints exposed:
 - `Sow stones`  
     - /kalaha/{gameId}/pits/{pitId} ; PUT
 
+`Swagger` - Using Swagger, you can view the API specifications accessed at http://localhost:8011/v2/api-docs
+
 WEB : `kalaha-web`
 --
 
