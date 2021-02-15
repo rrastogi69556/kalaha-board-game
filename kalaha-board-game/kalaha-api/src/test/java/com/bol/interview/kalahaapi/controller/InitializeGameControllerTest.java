@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static com.bol.interview.kalahaapi.common.utils.CommonUtils.fileToString;
+import static com.bol.interview.kalahaapi.common.utils.CommonUtils.readFileToString;
 import static com.bol.interview.kalahaapi.constants.api.TestConstants.STONES_PER_PIT_4;
 import static com.bol.interview.kalahaapi.constants.api.URLMappingConstants.KALAHA_CREATE_GAME_PATH;
 import static org.apache.logging.log4j.util.Strings.EMPTY;
@@ -72,6 +72,6 @@ public class InitializeGameControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(content().string(fileToString(jsonResource.getFile().getAbsolutePath())));
+                .andExpect(content().string(readFileToString(jsonResource.getFile().getAbsolutePath())));
     }
 }

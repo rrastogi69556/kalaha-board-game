@@ -46,8 +46,8 @@ public class SowController extends BaseController implements ISowController {
     })
     @Override
     @CrossOrigin(origins= KALAHA_API_URL, allowedHeaders = "*")
-    public ResponseEntity<String> moveStones( @PathVariable(value ="gameId") String gameId,
-                                      @PathVariable(value = "pitIndex") Integer pitIndex) throws Exception {
+    public ResponseEntity<String> moveStonesFromSelectedPit(@PathVariable(value ="gameId") String gameId,
+                                                            @PathVariable(value = "pitIndex") Integer pitIndex) throws Exception {
         log.info(INFO_SOW_API_INVOKED);
         String errorMessage = validationService.validateGameId(gameId);
 

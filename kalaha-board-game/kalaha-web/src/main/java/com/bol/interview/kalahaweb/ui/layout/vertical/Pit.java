@@ -14,8 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import static com.bol.interview.kalahaweb.constants.ErrorConstants.ERROR_SOW_STONES_API_CALL;
 import static com.bol.interview.kalahaweb.constants.ErrorConstants.INTERRUPTED_EXCEPTION_OCCURRED;
-import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.PIT_NUMBER_TO_SOW;
-import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.THEME;
+import static com.bol.interview.kalahaweb.constants.KalahaWebConstants.*;
 import static com.bol.interview.kalahaweb.constants.LogConstants.WARN_GAME_NOT_STARTED;
 
 
@@ -28,14 +27,14 @@ public class Pit extends VerticalLayout {
     private static final long serialVersionUID = -3035412018185570546L;
 
     private static final Integer DEFAULT_STONES = 0;
-    public static final String BACKGROUND_COLOR = "background-color";
+
 
     private final TextField pitTextField = new TextField();
     private final Button btn = new Button();
     private GameController gameController;
 
     public Pit() {
-        this.pitTextField.getElement().setAttribute("theme", "align-center");
+        this.pitTextField.getElement().setAttribute(THEME, ALIGN_CENTER);
         this.pitTextField.setReadOnly(true);
         this.pitTextField.setValue(DEFAULT_STONES.toString());
         this.pitTextField.getStyle().set("font-size", "15px");
@@ -43,7 +42,7 @@ public class Pit extends VerticalLayout {
         this.pitTextField.setMaxLength(30);
         this.pitTextField.setMinLength(30);
 
-        btn.getElement().setAttribute(THEME, "align-center contained");
+        btn.getElement().setAttribute(THEME, ALIGN_CENTER_AND_MATERIAL_DESING);
         btn.getStyle().set(BACKGROUND_COLOR, "#538FFB #5B54FA");
 
 
@@ -51,7 +50,7 @@ public class Pit extends VerticalLayout {
         setAlignItems(Alignment.CENTER);
 
         pitTextField.addValueChangeListener(e -> {
-            pitTextField.getStyle().set(BACKGROUND_COLOR, "#ff9933");
+            pitTextField.getStyle().set(BACKGROUND_COLOR, BACKGROUND_COLOR_WHEN_VALUE_CAHNGED);
             new ChangeColorThread(UI.getCurrent(), pitTextField).start();
         });
 

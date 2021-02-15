@@ -7,6 +7,6 @@ import org.springframework.http.ResponseEntity;
  */
 public interface ISowController extends IController {
 
-    ResponseEntity<String> moveStones(String gameId, Integer pitIndex) throws Exception;
+    ResponseEntity<String> moveStonesFromSelectedPit(String gameId, Integer pitIndex) throws Exception;
 
 }

@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static com.bol.interview.kalahaapi.common.utils.CommonUtils.fileToString;
+import static com.bol.interview.kalahaapi.common.utils.CommonUtils.readFileToString;
 import static com.bol.interview.kalahaapi.constants.api.KalahaApiConstants.NO_PIT_SELECTED;
 import static com.bol.interview.kalahaapi.constants.api.TestConstants.GAME_ID;
 import static com.bol.interview.kalahaapi.constants.api.TestConstants.STONES_PER_PIT_4;
@@ -76,6 +76,6 @@ public class SowControllerTest {
 
          mockMvc.perform(put(KALAHA_PATH  + "/9edff32b-7aa2-427a-ab98-14c4482bf86e"  + KALAHA_PITS_PATH + "/" + SELECTED_PIT_1))
                  .andExpect(status().isOk())
-                 .andExpect(content().string(fileToString(jsonResource.getFile().getAbsolutePath())));
+                 .andExpect(content().string(readFileToString(jsonResource.getFile().getAbsolutePath())));
     }
 }

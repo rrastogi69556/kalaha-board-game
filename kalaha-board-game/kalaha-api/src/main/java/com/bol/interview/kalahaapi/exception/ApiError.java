@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
+/**
+ * An holder of customized error codes.
+ */
 @Getter
 @Setter
 public class ApiError {

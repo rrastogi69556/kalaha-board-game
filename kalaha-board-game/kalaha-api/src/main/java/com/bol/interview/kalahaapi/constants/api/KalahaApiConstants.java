@@ -23,7 +23,7 @@ public class KalahaApiConstants {
     public static final int DEFAULT_STONES = 1;
     public static final boolean SHOULD_CAPTURE_IF_OPPOSITE_PIT_EMPTY = true;
     public static final boolean IS_TOP_SIDE = true;
-
+    public static final String NO_ERROR_MESSAGE = "";
 
 
 }

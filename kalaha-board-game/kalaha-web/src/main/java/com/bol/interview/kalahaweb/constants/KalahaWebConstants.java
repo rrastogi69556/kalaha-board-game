@@ -55,6 +55,9 @@ public class KalahaWebConstants {
     public static final String BUTTON_MATERIAL_THEME_CONTAINED = "contained";
     public static final String SHOULD_CAPTURE_STONES_IF_OPPOSITE_EMPTY = "Capture Stones if opposite Pit Empty ? ";
     public static final String PIT_NUMBER_TO_SOW = " Pit Selected to sow ";
-
+    public static final String BACKGROUND_COLOR = "background-color";
+    public static final String BACKGROUND_COLOR_WHEN_VALUE_CAHNGED = "#ff9933";
+    public static final String ALIGN_CENTER = "align-center";
+    public static final String ALIGN_CENTER_AND_MATERIAL_DESING = "align-center contained";
 
 }

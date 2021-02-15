@@ -40,17 +40,32 @@
 			<groupId>com.hazelcast</groupId>
 			<artifactId>hazelcast-client</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>2.0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<version>2.0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Spring Stub Runner for CDC tests -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -72,14 +87,6 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>1.2.3</version>
@@ -94,10 +101,6 @@
 			<artifactId>vaadin</artifactId>
 			<version>13.0.11</version>
 		</dependency>
-		<!--<dependency>
-		<groupId>com.vaadin</groupId>
-		<artifactId>vaadin-spring</artifactId>
-		</dependency>-->
 	</dependencies>
 
 	<!-- tag::bom[] -->
@@ -110,25 +113,11 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-		<!--	<dependency>
-				<groupId>com.vaadin</groupId>
-				<artifactId>vaadin-bom</artifactId>
-				<version>18.0.5</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>-->
 			<dependency>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>13.0.11</version>
 			</dependency>
-			<!-- https://mvnrepository.com/artifact/com.vaadin/vaadin-spring -->
-			<!--<dependency>
-				<groupId>com.vaadin</groupId>
-				<artifactId>vaadin-spring</artifactId>
-				<version>10.0.3</version>
-			</dependency>-->
-
 			<dependency>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-bom</artifactId>

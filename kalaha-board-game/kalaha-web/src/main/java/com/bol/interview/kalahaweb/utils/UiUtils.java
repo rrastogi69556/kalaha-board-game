@@ -13,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+import static com.bol.interview.kalahaweb.constants.ErrorConstants.ERROR_CANNOT_OPEN_RESOURCE;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -39,7 +40,7 @@ public class UiUtils {
                 }
             }
         }catch (IOException e) {
-            logger.error("Cannot open a resource file");
+            logger.error(ERROR_CANNOT_OPEN_RESOURCE);
         }
         return EMPTY;
     }

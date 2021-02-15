@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 public class CommonUtils {
     private CommonUtils(){}
 
-    public static String fileToString(String path) throws IOException {
+    public static String readFileToString(String path) throws IOException {
         return FileUtils.readFileToString(ResourceUtils.getFile(path), StandardCharsets.UTF_8);
     }
 

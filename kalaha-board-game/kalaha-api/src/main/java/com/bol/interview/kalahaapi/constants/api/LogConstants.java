@@ -15,4 +15,5 @@ public class LogConstants {
     public static final String ERROR_INVALID_STONES = "Invalid number of stones passed. Required non-negative stones or too large value.";
     public static final String ERROR_GAME_NOT_FOUND_IN_CACHE = "Exception occurred while fetching game from cache.Probably, cache is evicted";
     public static final String ERROR_INVALID_GAME_ID = "Either Game id is invalid, non-existing, null/empty or negative.";
+
 }
