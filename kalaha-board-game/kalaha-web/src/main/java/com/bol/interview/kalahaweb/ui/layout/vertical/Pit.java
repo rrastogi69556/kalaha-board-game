@@ -46,8 +46,7 @@ public class Pit extends VerticalLayout {
         btn.getElement().setAttribute(THEME, "align-center contained");
         btn.getStyle().set(BACKGROUND_COLOR, "#538FFB #5B54FA");
 
-        //configurePitTextFieldUIComponent();
-        //configurePitButtonUIComponent();
+
         add(this.btn, this.pitTextField);
         setAlignItems(Alignment.CENTER);
 

@@ -66,9 +66,9 @@ public class MainUI extends VerticalLayout {
 		add(buttonsLayout);
 
 
-		Dialog instructions = displayDialog(GAME_INSTRUCTION_MESSAGE, CLASSPATH_INSTRUCTIONS_FILE_PATH, CONFIRM_BUTTON_MESSAGE);
-		add(instructions);
-		instructionsBtn.addClickListener(e -> instructions.open());
+		Dialog instructionsDialog = displayDialog(GAME_INSTRUCTION_MESSAGE, CLASSPATH_INSTRUCTIONS_FILE_PATH, CONFIRM_BUTTON_MESSAGE);
+		add(instructionsDialog);
+		instructionsBtn.addClickListener(e -> instructionsDialog.open());
 
 
 		Dialog assumptionsDialog = displayDialog(GAME_ASSUMPTION_MESSAGE, CLASSPATH_ASSUMPTIONS_FILE_PATH, CONFIRM_BUTTON_MESSAGE);
@@ -87,9 +87,9 @@ public class MainUI extends VerticalLayout {
 	private Dialog displayStartButtonDialog() {
 		Dialog startGameDialog = new Dialog(new Text(INPUT_STONES_PER_PIT));
 
-		Input input = configureInputTextFieldInDialog(startGameDialog);
+		Input input = configureInputStonesPerPitDialog(startGameDialog);
 
-		RadioButtonGroup<String> radioGroup = configureRadioButtonGroupInDialog();
+		RadioButtonGroup<String> radioGroup = configureUserOptionsToCaptureStonesDialog();
 
 		VerticalLayout componentsInVerticalFashion = new VerticalLayout(input, radioGroup);
 		componentsInVerticalFashion.setAlignItems(Alignment.START);
@@ -115,7 +115,7 @@ public class MainUI extends VerticalLayout {
 	}
 
 
-	private RadioButtonGroup<String> configureRadioButtonGroupInDialog() {
+	private RadioButtonGroup<String> configureUserOptionsToCaptureStonesDialog() {
 		RadioButtonGroup<String> radioGroup = new RadioButtonGroup<>();
 		radioGroup.setLabel(SHOULD_CAPTURE_STONES_IF_OPPOSITE_EMPTY);
 		radioGroup.setItems("Yes", "No");
@@ -128,7 +128,7 @@ public class MainUI extends VerticalLayout {
 	}
 
 
-	private Input configureInputTextFieldInDialog(Dialog startGameDialog) {
+	private Input configureInputStonesPerPitDialog(Dialog startGameDialog) {
 		Input input = new Input();
 		input.setValue(String.valueOf(DEFAULT_STONES));
 		startGameDialog.setCloseOnEsc(false);
@@ -140,15 +140,19 @@ public class MainUI extends VerticalLayout {
 	private void sendUrlToApi(JsonRequest jsonRequest) {
 		try {
 			BoardGame game = this.gameController.startNewGame(jsonRequest);
-			gameUI.newGame(game);
-			gameUI.setGameIdTextField(game.getId());
-			gameUI.getPlayerTurnTextField().setValue("");
+			updateUIComponents(game);
 
 			Notification.show(INFO_GAME_STARTED + game.getId(), 3000, Notification.Position.BOTTOM_CENTER);
 
 		} catch (KalahaGameException ex) {
 			Notification.show("Error!. Message:" + ex.getMessage());
 		}
+	}
+
+	private void updateUIComponents(BoardGame game) {
+		gameUI.newGame(game);
+		gameUI.setGameIdTextField(game.getId());
+		gameUI.getPlayerTurnTextField().setValue("");
 	}
 
 
