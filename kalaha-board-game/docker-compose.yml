@@ -1,0 +1,55 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./docker_db_mounted_volume:/data/db
+    restart: unless-stopped
+
+  hazelcast:
+    image: hazelcast/hazelcast:3.12.12
+    container_name: "hazelcast"
+    ports:
+      - "5701:5701"
+
+  kalaha-api:
+    build: ./kalaha-api
+    depends_on:
+      - hazelcast
+      - mongodb
+    links:
+      - kalaha-web
+    ports:
+      - 8011:8011
+      - 8012:8012
+    environment:
+      PORT: 8011
+      DEBUG_PORT: 8012
+      MONGO_HOST_NAME: mongodb
+      MONGO_DB_PORT: 27017
+      MONGO_DB_NAME: kalaha_db
+      MONG_DB_URI: mongodb://mongodb:27017/kalaha_db
+      API_URL: http://kalaha-api:8011
+      SPRING_APPLICATION_NAME: kalaha-api
+
+  kalaha-web:
+    build: ./kalaha-web
+    depends_on:
+      - hazelcast
+      - mongodb
+    ports:
+      - 8080:8080
+      - 8013:8013
+    environment:
+      DEBUG_PORT: 8013
+      KALAHA_API_URL: http://kalaha-api:8011
+      SPRING_APPLICATION_NAME: kalaha-web
+      MONGO_HOST_NAME: mongodb
+      MONGO_DB_PORT: 27017
+      MONGO_DB_NAME: kalaha_db
+      MONG_DB_URI: mongodb://mongodb:27017/kalaha_db
+volumes:
+  docker_db_mounted_volume:
