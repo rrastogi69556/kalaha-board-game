@@ -73,12 +73,12 @@ public class GameControllerTest {
     @SneakyThrows
     @Test(expected = KalahaGameException.class)
     public void when_gameIsNull_expect_Exception() {
-        KalahaGameException ex= new KalahaGameException(ERROR_RESPONSE_NULL);
+        KalahaGameException nullException= new KalahaGameException(ERROR_RESPONSE_NULL);
 
         when(webClientConfig.getCreateGameApiUrl()).thenReturn(KALAHA_CREATE_API_URL_STRING);
         when(webClientHelper.postAndFetchResponseFromCreateGameApi(anyString(), any(), eq(restTemplate))).thenReturn(null);
 
-        doThrow(ex).when(webClientHelper).throwErrorIfInvalidResponse(eq(null));
+        doThrow(nullException).when(webClientHelper).throwErrorIfInvalidResponse(eq(null));
         webClientHelper.throwErrorIfInvalidResponse(null);
     }
 

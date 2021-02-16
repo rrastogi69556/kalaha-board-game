@@ -121,7 +121,6 @@ public class SowHelperTest {
 
     @Test
     public void when_lastStoneInSmallPit_expect_largePitIncrementByOppositeStonesPlus1() {
-        Integer EXPECTED_LARGE_PIT_STONES_COUNT = 7;
         game.setActivePlayer(PLAYER_1);
         game.setCurrentPit(PLAYER_1_SELECTED_SMALL_PIT);
         Pit oppositePit = getOppositePit(game, game.getPit(game.getCurrentPit()));
@@ -131,37 +130,45 @@ public class SowHelperTest {
 
     @Test
     public void when_gameBoardUnInitialized_expect_errorMessage() {
-        String EXPECTED_ERROR_MESSAGE = "Game board is not setup properly";
         game = new BoardGame(NO_PIT_SELECTED, GAME_ID);
         String ACTUAL_MESSAGE = getMessageOnError(isBoardUnInitializedOrEmpty(game), ERROR_GAME_UNINITIALIZED, game);
-        assertEquals(EXPECTED_ERROR_MESSAGE, ACTUAL_MESSAGE);
+        assertEquals(GAME_BOARD_WRONG_SETUP, ACTUAL_MESSAGE);
     }
 
     @Test
-    public void when_wrongTurn_expect_errorMessage() {
-        String EXPECTED_ERROR_MESSAGE = "Pit cannot be selected to pick stones as it is not your turn yet!";
+    public void when_wrongTurnPlayer2_expect_errorMessage() {
         game.setActivePlayer(PLAYER_2);
         String ACTUAL_MESSAGE = getMessageOnError(isActivePlayerNotAllowedToMoveStones(game, PLAYER_1_SELECTED_SMALL_PIT), INVALID_MOVE_NOT_YOUR_TURN, game);
-        assertEquals(EXPECTED_ERROR_MESSAGE, ACTUAL_MESSAGE);
+        assertEquals(WRONG_TRUN_MESSAGE, ACTUAL_MESSAGE);
+
     }
+
+    @Test
+    public void when_wrongTurnPlayer1_expect_errorMessage() {
+        game.setActivePlayer(PLAYER_1);
+        String ACTUAL_MESSAGE = getMessageOnError(isActivePlayerNotAllowedToMoveStones(game, PLAYER_2_SELECTED_SMALL_PIT), INVALID_MOVE_NOT_YOUR_TURN, game);
+        assertEquals(WRONG_TRUN_MESSAGE, ACTUAL_MESSAGE);
+
+    }
+
 
     @Test
     public void when_selectedPitALargePit_expect_errorMessage() {
-        String EXPECTED_ERROR_MESSAGE = "Larger Pit cannot be selected to pick stones!";
         game.setCurrentPit(PLAYER_1_SELECTED_LARGE_PIT);
         String ACTUAL_MESSAGE_PLAYER_1 = getMessageOnError(isSelectedPitALargePit(PLAYER_1_SELECTED_LARGE_PIT), INVALID_MOVE_CANT_SELECT_LARGE_PIT, game);
+
         game.setCurrentPit(PLAYER_2_SELECTED_LARGE_PIT);
         String ACTUAL_MESSAGE_PLAYER_2 = getMessageOnError(isSelectedPitALargePit(PLAYER_1_SELECTED_LARGE_PIT), INVALID_MOVE_CANT_SELECT_LARGE_PIT, game);
-        assertEquals(EXPECTED_ERROR_MESSAGE, ACTUAL_MESSAGE_PLAYER_1);
-        assertEquals(EXPECTED_ERROR_MESSAGE, ACTUAL_MESSAGE_PLAYER_2);
+
+        assertEquals(CANNOT_SELECT_LARGE_PIT, ACTUAL_MESSAGE_PLAYER_1);
+        assertEquals(CANNOT_SELECT_LARGE_PIT, ACTUAL_MESSAGE_PLAYER_2);
     }
 
     @Test
     public void when_selectedPitEmpty_expect_errorMessage() {
-        String EXPECTED_ERROR_MESSAGE = "Selected Pit is already empty!";
         game.setActivePlayer(PLAYER_1);
         game.getPit(PLAYER_1_SELECTED_SMALL_PIT).invalidateStones();
         String ACTUAL_MESSAGE = getMessageOnError(isSelectedPitEmpty(game.getPit(PLAYER_1_SELECTED_SMALL_PIT)), INVALID_MOVE_SELECTED_PIT_EMPTY, game);
-        assertEquals(EXPECTED_ERROR_MESSAGE, ACTUAL_MESSAGE);
+        assertEquals(SELECTED_PIT_EMPTY, ACTUAL_MESSAGE);
     }
 }

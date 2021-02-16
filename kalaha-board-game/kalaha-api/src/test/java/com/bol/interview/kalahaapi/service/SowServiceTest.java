@@ -12,11 +12,17 @@ import org.junit.Test;
 import static com.bol.interview.kalahaapi.constants.api.MessageUIConstants.INVALID_MOVE_CANT_SELECT_LARGE_PIT;
 import static com.bol.interview.kalahaapi.constants.api.PitStonesPlacementConstants.*;
 import static com.bol.interview.kalahaapi.constants.api.TestConstants.*;
+import static com.bol.interview.kalahaapi.enums.EGameStatus.OVER;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_1;
 import static com.bol.interview.kalahaapi.enums.EPlayer.PLAYER_2;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * Player 1 is at top side, (8-14)
+ * Player 2 is at bottom side (1-7)
+ *
+ */
 public class SowServiceTest {
 
     private BoardGame game;
@@ -47,7 +53,7 @@ public class SowServiceTest {
    }
 
     @Test
-    public void testAnticlockwise() {
+    public void testSowingAnticlockwise() {
         //when selected pit
         game = service.sowStonesAndGetGame(game, PIT_INDEX_3);
         //then sow stones in anti-clockwise direction
@@ -55,7 +61,7 @@ public class SowServiceTest {
     }
 
     @Test
-    public void when_sowLargePitPlayer1_then_errorMessageExpected() {
+    public void when_sowLargePit_then_errorMessageExpected() {
         //when
         game = service.sowStonesAndGetGame(game, PLAYER_1_LARGE_PIT);
         //then
@@ -380,4 +386,65 @@ public class SowServiceTest {
         assertThat(game.getActivePlayer()).isEqualTo(PLAYER_2);
 
     }
+
+    @Test
+    public void when_2StonesPerPitSownUntilFinished_then_expectPlayer1Wins() {
+        //given
+        Board board = new Board(STONES_PER_PIT_2);
+        HumanPlayer player1 = new HumanPlayer(board.getPlayer1Pits(), true);
+        HumanPlayer player2 = new HumanPlayer(board.getPlayer2Pits(), false);
+        game = new BoardGame(player1, player2, board, -1, "123456789");
+        game.setCaptureIfOppositeEmpty(true);
+        service = new SowService(new SowHelper());
+
+        //when - pass 1
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_5);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_2);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_5_PASS1);
+
+        //when - pass 2
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_3);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_1);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_3_PASS2);
+
+        //when -- pass 3
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_12);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_1);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_12_PASS3);
+
+        //when -- pass 4
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_10);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_2);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_10_PASS4);
+
+        //when -- pass 5
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_1);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_1);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_1_PASS5);
+
+        //when -- pass 6
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_8);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_2);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_8_PASS6);
+
+        //when -- pass 7
+        game = service.sowStonesAndGetGame(this.game, PIT_INDEX_2);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_1);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_2_PASS7);
+
+        //when -- pass 8
+        game = service.sowStonesAndGetGame(game, PIT_INDEX_9);
+        assertThat(this.game.getActivePlayer()).isEqualTo(PLAYER_2);
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_9_PASS8);
+
+        //when -- pass 9
+        game = service.sowStonesAndGetGame(game, PIT_INDEX_6);
+
+        //then
+
+        assertThat(game.getBoard().getPits().toString()).hasToString(EXPECTED_PLACEMENT_AFTER_SOWING_6_PASS9);
+        assertThat(game.getGameResult().getGameStatus()).isEqualTo(OVER);
+        assertThat(game.getGameResult().getMessageUI()).isEqualTo(PLAYER_1_WON_BY_4_STONES);
+    }
+
 }

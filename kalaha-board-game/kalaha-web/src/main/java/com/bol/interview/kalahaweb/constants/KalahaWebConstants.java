@@ -21,7 +21,7 @@ public class KalahaWebConstants {
     public static final Integer DEFAULT_STONES = 6 ;
     public static final String CLASSPATH_INSTRUCTIONS_FILE_PATH = "classpath:static/instructions.txt";
     public static final String CLASSPATH_ASSUMPTIONS_FILE_PATH = "classpath:static/assumptions.txt";
-    public static final String DELETE_RESPONSE = "Deleted from database!";
+    public static final String DELETE_RESPONSE = "\"Deleted from database!\"";
     public static final boolean ENABLE_PLAYER1_PITS = true;
     public static final boolean ENABLE_PLAYER2_PITS = true;
     public static final Integer PIT_1 = 1;
