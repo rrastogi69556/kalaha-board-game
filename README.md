@@ -133,22 +133,22 @@ New Page:
 ![img.png](kalaha-board-game/img.png)
 
 Show Instructions:
-![img_1.png](img_1.png)
+![img_1.png](kalaha-board-game/img_1.png)
 
 Show Assumptions:
-![img_2.png](img_2.png)
+![img_2.png](kalaha-board-game/img_2.png)
 
 User Options while starting game:
-![img_3.png](img_3.png)
+![img_3.png](kalaha-board-game/img_3.png)
 
 Game Moving Stone Operation:
-![img_4.png](img_4.png)
+![img_4.png](kalaha-board-game/img_4.png)
 
 Game End: 
-![img_5.png](img_5.png)
+![img_5.png](kalaha-board-game/img_5.png)
 
 Swagger: 
-![img_6.png](img_6.png)
+![img_6.png](kalaha-board-game/img_6.png)
 
 # Getting Started
 
