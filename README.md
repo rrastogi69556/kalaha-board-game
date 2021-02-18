@@ -130,7 +130,7 @@ Please make sure no servers are running as this applications uses below ports : 
 #Snapshots:
 
 New Page: 
-![img.png](img.png)
+![img.png](kalaha-board-game/img.png)
 
 Show Instructions:
 ![img_1.png](img_1.png)
