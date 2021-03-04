@@ -150,6 +150,11 @@ Game End:
 Swagger: 
 ![img_6.png](kalaha-board-game/img_6.png)
 
+High-Level-Diagram (for future scope):
+
+![High_level_diagram.PNG](High_level_diagram.PNG)
+
+
 # Getting Started
 
 ### Reference Documentation
